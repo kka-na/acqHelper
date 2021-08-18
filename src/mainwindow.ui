@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>530</width>
+    <height>397</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Acquisition Helper</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(241, 245, 248);</string>
+   </property>
+   <widget class="QLabel" name="dataStorageLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>411</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Data Storage Location</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="dataStorageSearch">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>10</y>
+      <width>90</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(40, 44, 56);
+color: rgb(241, 245, 248);</string>
+    </property>
+    <property name="text">
+     <string>Search</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="timeCombo">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>50</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox QAbstractItemView{
+selection-color: #9580FF;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Day</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Night</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Sunrise/Sunset</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="weatherCombo">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>50</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox QAbstractItemView{
+selection-color: #9580FF;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Sunny</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Cloudy</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Rain</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Fog</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Snow</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="regionCombo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox QAbstractItemView{
+selection-color: #9580FF;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Seoul</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Incheon</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Gyeonggi</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="roadCombo">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>50</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox QAbstractItemView{
+selection-color: #9580FF;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Highway</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>General Road</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Local Road</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Back Road</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Tunnel</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Child Sanctuaries</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Senior Sanctuaries</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Pedestrian Accident-prone Areas</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="carCombo">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>90</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox QAbstractItemView{
+selection-color: #9580FF;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Santa Fe</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Niro</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="driverCombo">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>90</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox QAbstractItemView{
+selection-color: #9580FF;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Kim Kana</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Lee Sang-jun</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Park Seung-woo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Kim Jong-gwang</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="scenarioCombo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>90</y>
+      <width>121</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox QAbstractItemView{
+selection-color: #9580FF;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Normal Scenario</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Special Scenario</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>AI Challenge Scenerio</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="recordingStart">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>251</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(40, 44, 56);
+color: rgb(241, 245, 248);</string>
+    </property>
+    <property name="text">
+     <string>Information Recording Start</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="recordingStop">
+    <property name="geometry">
+     <rect>
+      <x>269</x>
+      <y>130</y>
+      <width>251</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(40, 44, 56);
+color: rgb(241, 245, 248);</string>
+    </property>
+    <property name="text">
+     <string>Information Recording Stop</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="trafficCombo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>210</y>
+      <width>331</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox QAbstractItemView{
+selection-color: #9580FF;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Trun Left &amp; Right</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>U-turn</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Lane Change</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Congestion Situation</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Crossing</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Accident Situation</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Road Damage</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Falling Object</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="trafficStart">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>210</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(40, 44, 56);
+color: rgb(241, 245, 248);</string>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="trafficStop">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>210</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(40, 44, 56);
+color: rgb(241, 245, 248);</string>
+    </property>
+    <property name="text">
+     <string>End</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="specialTrafficCombo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>250</y>
+      <width>331</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox QAbstractItemView{
+selection-color: #9580FF;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Reckless Driving</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Pedestrain Special Behavior</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Traffic Control Situation</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Breathalyzer Situation</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="specialTrafficStop">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>250</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(40, 44, 56);
+color: rgb(241, 245, 248);</string>
+    </property>
+    <property name="text">
+     <string>End</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="specialTrafficStart">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>250</y>
+      <width>80</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(40, 44, 56);
+color: rgb(241, 245, 248);</string>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="dateLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>290</y>
+      <width>101</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Date</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="assistantCombo">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>90</y>
+      <width>120</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox QAbstractItemView{
+selection-color: #9580FF;
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Kim Kana</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Lee Sang-jun</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Park Seung-woo</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Kim Jong-gwang</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>-</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QProgressBar" name="storageProgress">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>290</y>
+      <width>391</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QProgressBar::chunk {
+		background-color: #282C38;
+		width: 5px;
+		margin: 0.5px;
+}
+
+QProgressBar{
+		border: 0.5px solid #282C38;
+		border-radius: 5px;
+		color: #9580FF;
+		text-align: center;
+}</string>
+    </property>
+    <property name="value">
+     <number>24</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="carImg">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>330</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/car);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>530</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(241, 245, 248);</string>
+   </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_Acquisition_Helper"/>
+    <addaction name="actionDocumentation"/>
+   </widget>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="statusTip">
+    <string/>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(241, 245, 248);</string>
+   </property>
+  </widget>
+  <action name="actionAbout_Acquisition_Helper">
+   <property name="text">
+    <string>About Acquisition Helper</string>
+   </property>
+  </action>
+  <action name="actionDocumentation">
+   <property name="text">
+    <string>Documentation</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../resource/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
