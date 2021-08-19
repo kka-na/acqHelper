@@ -15,7 +15,7 @@ include_directories( ${CMAKE_CURRENT_BINARY_DIR} )
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 find_package(Qt5 REQUIRED Widgets Gui)
-find_package(Qt5 REQUIRED COMPONENTS Quick Core Gui Sql X11Extras OpenGL Network PrintSupport WebEngineWidgets SerialPort SerialBus Charts)
+find_package(Qt5 REQUIRED COMPONENTS Quick Core Gui Sql X11Extras)
 find_package(Qt5QuickCompiler)
 
 find_package(PkgConfig)
@@ -44,5 +44,5 @@ add_executable(achelper
 
 
 target_link_libraries(achelper PUBLIC 
-    Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network Qt5::WebEngineWidgets Qt5::OpenGL Qt5::Charts
+    Qt5::Core Qt5::Gui Qt5::Widgets 
 ) 

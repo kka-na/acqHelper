@@ -2,16 +2,9 @@
 #define Timestamp_h
 
 #include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <sstream>
 #include <string>
 #include <chrono>
 #include <time.h>
-#include <ctime>
-#include <cmath>
-#include <sys/time.h> 
-#include <cstddef>
 
 using namespace std;
 

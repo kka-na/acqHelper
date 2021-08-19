@@ -3,30 +3,26 @@
 
 #include <QMainWindow>
 #include <QCoreApplication>
-#include <QFileDialog>
-#include <QListWidgetItem>
-#include <QRadioButton>
-#include <QDebug>
-#include <QMessageBox>
 #include <QObject>
+
+#include <QListWidgetItem>
+#include <QMessageBox>
 #include <QWidget>
-#include <QThread>
 #include <QLabel>
-#include <QRect>
+
+#include <QFileDialog>
+#include <QFile>
+#include <QString>
+#include <QDir>
+
+#include <QDebug>
+#include <QThread>
 #include <QTimer>
-#include <QLayout>
 #include <QMetaType>
 #include <QStorageInfo>
 
-#include <QFile>
-#include <QString>
-#include <QDebug>
-#include <QDir>
-
 #include <iostream>
-#include <iomanip>
 #include <fstream>
-#include <sstream>
 #include <string>
 #include <unistd.h>	
 

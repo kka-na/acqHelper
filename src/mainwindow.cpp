@@ -51,8 +51,7 @@ void MainWindow::startRecord(){
 	driver = ui->driverCombo->currentText().toStdString();
 	assistant = ui->assistantCombo->currentText().toStdString();
 
-	informs.clear();
-	inform.clear();
+	informs.clear(); inform.clear(); traffic.clear(); special_traffic.clear();
 	this->makeJSON();
 
 	timer = make_shared<QTimer>();
@@ -60,7 +59,6 @@ void MainWindow::startRecord(){
 	timer->start(500);
 }
 void MainWindow::stopRecord(){
-	//show json text
 	informs.append(inform);
 	Json::StyledWriter writer;
 	ofstream out(json_path.c_str());
