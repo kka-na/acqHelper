@@ -16,7 +16,6 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 find_package(Qt5 REQUIRED Widgets Gui)
 find_package(Qt5 REQUIRED COMPONENTS Quick Core Gui Sql X11Extras)
-find_package(Qt5QuickCompiler)
 
 find_package(PkgConfig)
 pkg_check_modules(JSONCPP jsoncpp)
@@ -36,10 +35,9 @@ set(SOURCE_achelper
 
 qt5_wrap_cpp(HEADER_achelper ${HEADERS})
 qt5_wrap_ui(UI_achelper src/mainwindow.ui)
-qtquick_compiler_add_resources(RESOURCES resource/resources.qrc)
 
 add_executable(achelper 
-    ${SOURCE_achelper} ${HEADER_achelper} ${UI_achelper} ${RESOURCES}
+    ${SOURCE_achelper} ${HEADER_achelper} ${UI_achelper}
 )
 
 

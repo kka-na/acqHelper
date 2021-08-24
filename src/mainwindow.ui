@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Data Storage Location</string>
+     <string>데이터저장위치</string>
     </property>
    </widget>
    <widget class="QPushButton" name="dataStorageSearch">
@@ -63,17 +63,17 @@ selection-color: #9580FF;
     </property>
     <item>
      <property name="text">
-      <string>Day</string>
+      <string>주간</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Night</string>
+      <string>야간</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Sunrise/Sunset</string>
+      <string>일출/일몰</string>
      </property>
     </item>
    </widget>
@@ -93,27 +93,27 @@ selection-color: #9580FF;
     </property>
     <item>
      <property name="text">
-      <string>Sunny</string>
+      <string>맑음</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Cloudy</string>
+      <string>흐림</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Rain</string>
+      <string>비</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Fog</string>
+      <string>안개</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Snow</string>
+      <string>눈</string>
      </property>
     </item>
    </widget>
@@ -133,17 +133,17 @@ selection-color: #9580FF;
     </property>
     <item>
      <property name="text">
-      <string>Seoul</string>
+      <string>서울</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Incheon</string>
+      <string>인천</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Gyeonggi</string>
+      <string>경기</string>
      </property>
     </item>
    </widget>
@@ -163,42 +163,42 @@ selection-color: #9580FF;
     </property>
     <item>
      <property name="text">
-      <string>Highway</string>
+      <string>고속도로</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>General Road</string>
+      <string>일반도로</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Local Road</string>
+      <string>지방도로</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Back Road</string>
+      <string>이면도로</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Tunnel</string>
+      <string>터널</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Child Sanctuaries</string>
+      <string>어린이보호구역</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Senior Sanctuaries</string>
+      <string>노인보호구역</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Pedestrian Accident-prone Areas</string>
+      <string>보행자사고다발지역</string>
      </property>
     </item>
    </widget>
@@ -218,12 +218,12 @@ selection-color: #9580FF;
     </property>
     <item>
      <property name="text">
-      <string>Santa Fe</string>
+      <string>싼타페</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Niro</string>
+      <string>니로</string>
      </property>
     </item>
    </widget>
@@ -243,22 +243,22 @@ selection-color: #9580FF;
     </property>
     <item>
      <property name="text">
-      <string>Kim Kana</string>
+      <string>김가나</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Lee Sang-jun</string>
+      <string>이상준</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Park Seung-woo</string>
+      <string>박승우</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Kim Jong-gwang</string>
+      <string>김종광</string>
      </property>
     </item>
     <item>
@@ -283,17 +283,17 @@ selection-color: #9580FF;
     </property>
     <item>
      <property name="text">
-      <string>Normal Scenario</string>
+      <string>일반시나리오</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Special Scenario</string>
+      <string>특수시나리오</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>AI Challenge Scenerio</string>
+      <string>AI챌린지시나리오 </string>
      </property>
     </item>
    </widget>
@@ -347,42 +347,42 @@ selection-color: #9580FF;
     </property>
     <item>
      <property name="text">
-      <string>Trun Left &amp; Right</string>
+      <string>좌,우회전</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>U-turn</string>
+      <string>유턴</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Lane Change</string>
+      <string>차선변경</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Congestion Situation</string>
+      <string>정체상황</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Crossing</string>
+      <string>보행자횡단</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Accident Situation</string>
+      <string>사고상황</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Road Damage</string>
+      <string>도로파손</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Falling Object</string>
+      <string>낙하물</string>
      </property>
     </item>
    </widget>
@@ -436,22 +436,22 @@ selection-color: #9580FF;
     </property>
     <item>
      <property name="text">
-      <string>Reckless Driving</string>
+      <string>난폭운전</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Pedestrain Special Behavior</string>
+      <string>보행자특수행위</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Traffic Control Situation</string>
+      <string>교통단속상황</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Breathalyzer Situation</string>
+      <string>음주단속상황</string>
      </property>
     </item>
    </widget>
@@ -521,22 +521,22 @@ selection-color: #9580FF;
     </property>
     <item>
      <property name="text">
-      <string>Kim Kana</string>
+      <string>김가나</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Lee Sang-jun</string>
+      <string>이상준</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Park Seung-woo</string>
+      <string>박승우</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Kim Jong-gwang</string>
+      <string>김종광</string>
      </property>
     </item>
     <item>
@@ -572,17 +572,17 @@ QProgressBar{
      <number>24</number>
     </property>
    </widget>
-   <widget class="QLabel" name="carImg">
+   <widget class="QLabel" name="movingLabel">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>330</y>
-      <width>20</width>
+      <width>10</width>
       <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">image: url(:/car);</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string/>
@@ -629,8 +629,6 @@ QProgressBar{
    </property>
   </action>
  </widget>
- <resources>
-  <include location="../resource/resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

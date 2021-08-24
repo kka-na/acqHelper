@@ -2,6 +2,13 @@
 
 ![image](https://user-images.githubusercontent.com/69347961/130012909-177d7ad1-16ae-4a11-928a-9a1e8bf54d13.png)
 
+## Environment
+```
+sudo apt-get install qt5-default
+sudo apt-get install libjsoncpp-dev
+```
+
+## Installation
 ```
 git clone https://github.com/kka-na/acqHelper.git
 cd acqHelper

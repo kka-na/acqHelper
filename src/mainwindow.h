@@ -53,16 +53,19 @@ private:
     Json::Value traffic, special_traffic;
     string file_path, json_path;
     string date, scenario, region, time, weather, road, car, driver, assistant; 	
+    double start, end, minute, hour, total_frame;
     string traffic_start_time, special_traffic_start_time;
 
     shared_ptr<QTimer> timer;
 
 private:
     void setFunction();
-    void makeJSON();
+    void setMovingLabel(int status);
+    void makeStartJSON();
+    void makeEndJSON();
     void addJSON(string traffic_type, string type_s, string start_s, string end_s);
     
-    void stopCar();
+    void stopMovingLabel();
 
 private slots:
     void setUsage();
@@ -76,7 +79,7 @@ private slots:
     void startSpecialTraffic();
     void stopSpecialTraffic();
 
-    void moveCar();
+    void movingLabel();
 
 };
 #endif //MAINWINDOW_H

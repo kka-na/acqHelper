@@ -3,6 +3,7 @@
 
 MainWindow::MainWindow(QWidget *parent):QMainWindow(parent),ui(new Ui::MainWindow){
 	ui->setupUi(this);
+	this->setMovingLabel(0);
 	this->setUsage();
 	this->setFunction();
 }
@@ -42,6 +43,7 @@ void MainWindow::setStorage(){
 }
 void MainWindow::startRecord(){
 	date = ts.getDate().c_str();
+	start = stod(ts.getMilliTime().c_str());
 	region = ui->regionCombo->currentText().toStdString();
 	time = ui->timeCombo->currentText().toStdString();
 	weather = ui->weatherCombo->currentText().toStdString();
@@ -52,34 +54,40 @@ void MainWindow::startRecord(){
 	assistant = ui->assistantCombo->currentText().toStdString();
 
 	informs.clear(); inform.clear(); traffic.clear(); special_traffic.clear();
-	this->makeJSON();
+	this->makeStartJSON();
 
 	timer = make_shared<QTimer>();
-	connect(timer.get(), SIGNAL(timeout()), this, SLOT(moveCar()));
+	connect(timer.get(), SIGNAL(timeout()), this, SLOT(movingLabel()));
 	timer->start(500);
 }
 void MainWindow::stopRecord(){
-	informs.append(inform);
-	Json::StyledWriter writer;
-	ofstream out(json_path.c_str());
-	out<<writer.write(informs);
-	out.close();
-	stopCar();
+	end = stod(ts.getMilliTime().c_str());
+	minute = (end-start)*0.00001;
+	hour = minute/60;
+	total_frame = minute*120;
+
+	this->makeEndJSON();
+	stopMovingLabel();
 }
 
+
 void MainWindow::startTraffic(){
+	this->setMovingLabel(1);
 	traffic_start_time = ts.getMilliTime();
 }
 void MainWindow::stopTraffic(){
+	this->setMovingLabel(0);
 	string type = ui->trafficCombo->currentText().toStdString();
 	string traffic_end_time = ts.getMilliTime();
 	this->addJSON("traffic", type, traffic_start_time, traffic_end_time);
 	traffic_start_time = "";
 }
 void MainWindow::startSpecialTraffic(){
+	this->setMovingLabel(2);
 	special_traffic_start_time = ts.getMilliTime();
 }
 void MainWindow::stopSpecialTraffic(){
+	this->setMovingLabel(0);
 	string type = ui->specialTrafficCombo->currentText().toStdString();
 	string special_traffic_end_time = ts.getMilliTime();
 	this->addJSON("special_traffic", type, special_traffic_start_time, special_traffic_end_time);
@@ -87,48 +95,74 @@ void MainWindow::stopSpecialTraffic(){
 }
 
 
-void MainWindow::makeJSON(){
+void MainWindow::makeStartJSON(){
 	json_path = file_path+ts.getMilliTime()+".json";
 	ifstream in(json_path.c_str());
 	if(in.is_open()) in >> informs;
 
-	inform["date"] = date;
-	inform["scenario"] = scenario;
-	inform["region"] = region;
-	inform["time"] = time;
-	inform["weather"] = weather;
-	inform["road"] = road;
-	inform["car"] = car;
-	inform["driver"] = driver;
-	inform["assistant"] = assistant;
-	inform["traffic"] = traffic;
-	inform["special_traffic"] =traffic;
+	inform["날짜"] = date;
+	inform["시작"] = to_string(start);
+	inform["시나리오"] = scenario;
+	inform["지역"] = region;
+	inform["시간대"] = time;
+	inform["계절"] = weather;
+	inform["도로"] = road;
+	inform["차량"] = car;
+	inform["운전자"] = driver;
+	inform["동승자"] = assistant;
+	inform["교통상황"] = traffic;
+	inform["특수교통상황"] =traffic;
+}
+
+void MainWindow::makeEndJSON(){
+	inform["끝"] = to_string(end);
+	inform["총프레임"] = to_string(total_frame);
+	inform["총분"] = to_string(minute);
+	inform["총시간"] = to_string(hour);
+
+	informs.append(inform);
+	Json::StyledWriter writer;
+	ofstream out(json_path.c_str());
+	out<<writer.write(informs);
+	out.close();
 }
 
 void MainWindow::addJSON(string traffic_type, string type_s, string start_s, string end_s){
 	Json::Value traffics;
 
-	traffics["type"] = type_s;
-	traffics["start"] = start_s;
-	traffics["end"] = end_s;
+	traffics["종류"] = type_s;
+	traffics["시작"] = start_s;
+	traffics["끝"] = end_s;
 
 	if(traffic_type == "traffic"){
 		traffic.append(traffics);
-		inform["traffic"] = traffic;
+		inform["교통상황"] = traffic;
 	}else{
 		special_traffic.append(traffics);
-		inform["special_traffic"] =special_traffic;
+		inform["특수교통상황"] =special_traffic;
 	}
 	traffics.clear();
 }
 
-void MainWindow::moveCar(){
- 	if(ui->carImg->x() > 500){
-		ui->carImg->move(0,330);
+
+//show process of acquistion
+void MainWindow::setMovingLabel(int status){
+	if(status == 1){
+		ui->movingLabel->setStyleSheet("QLabel {background-color: rgb(94, 226, 177);}");
+	}else if(status == 2){
+		ui->movingLabel->setStyleSheet("QLabel {background-color: rgb(255, 84, 113);}");
 	}else{
-		ui->carImg->move(ui->carImg->x()+10,330);
+		ui->movingLabel->setStyleSheet("QLabel {background-color: rgb(153, 127, 255);}");
 	}
 }
-void MainWindow::stopCar(){
+
+void MainWindow::movingLabel(){
+ 	if(ui->movingLabel->x() > 500){
+		ui->movingLabel->move(0,330);
+	}else{
+		ui->movingLabel->move(ui->movingLabel->x()+5,330);
+	}
+}
+void MainWindow::stopMovingLabel(){
 	timer->stop();
 }
