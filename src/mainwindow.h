@@ -56,7 +56,7 @@ private:
     double start, end, minute, hour, total_frame;
     string traffic_start_time, special_traffic_start_time;
 
-    shared_ptr<QTimer> timer;
+    QTimer* timer;
 
 private:
     void setFunction();
@@ -66,6 +66,10 @@ private:
     void addJSON(string traffic_type, string type_s, string start_s, string end_s);
     
     void stopMovingLabel();
+    double calculateTime(long start_time, long end_time);
+
+    string getScenarioString();
+    
 
 private slots:
     void setUsage();

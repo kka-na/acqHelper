@@ -313,6 +313,9 @@ color: rgb(241, 245, 248);</string>
     <property name="text">
      <string>Information Recording Start</string>
     </property>
+    <property name="shortcut">
+     <string/>
+    </property>
    </widget>
    <widget class="QPushButton" name="recordingStop">
     <property name="geometry">
@@ -329,6 +332,9 @@ color: rgb(241, 245, 248);</string>
     </property>
     <property name="text">
      <string>Information Recording Stop</string>
+    </property>
+    <property name="shortcut">
+     <string>D</string>
     </property>
    </widget>
    <widget class="QComboBox" name="trafficCombo">

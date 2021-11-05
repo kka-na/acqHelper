@@ -43,7 +43,7 @@ void MainWindow::setStorage(){
 }
 void MainWindow::startRecord(){
 	date = ts.getDate().c_str();
-	start = stod(ts.getMilliTime().c_str());
+	start = stol(ts.getMilliTime().c_str());
 	region = ui->regionCombo->currentText().toStdString();
 	time = ui->timeCombo->currentText().toStdString();
 	weather = ui->weatherCombo->currentText().toStdString();
@@ -56,15 +56,36 @@ void MainWindow::startRecord(){
 	informs.clear(); inform.clear(); traffic.clear(); special_traffic.clear();
 	this->makeStartJSON();
 
-	timer = make_shared<QTimer>();
-	connect(timer.get(), SIGNAL(timeout()), this, SLOT(movingLabel()));
+	timer = new QTimer(this);
+	connect(timer, SIGNAL(timeout()), this, SLOT(movingLabel()));
 	timer->start(500);
 }
+
+
+double MainWindow::calculateTime(long start_time, long end_time){
+    long start_second, end_second;
+    start_second = (start_time/1000000000)*24*60*60 + ((start_time%1000000000)/10000000)*60*60 + ((start_time%10000000)/100000)*60 + start_time%100000;
+	end_second = (end_time/1000000000)*24*60*60 + ((end_time%1000000000)/10000000)*60*60 + ((end_time%10000000)/100000)*60 + end_time%100000;
+    int sec = end_second - start_second;
+    return (double)sec/1000;
+}
+
 void MainWindow::stopRecord(){
-	end = stod(ts.getMilliTime().c_str());
-	minute = (end-start)*0.00001;
+	end = stol(ts.getMilliTime().c_str());
+	long sstart, eend; 
+	sstart = long(start)%10000000000;
+	eend = long(end)%10000000000;
+	double second = calculateTime(sstart, eend);
+	minute = second/60;
 	hour = minute/60;
-	total_frame = minute*120;
+	int fps = 0;
+	if(ui->scenarioCombo->currentIndex() == 0)
+		fps = 2;
+	else if(ui->scenarioCombo->currentIndex() == 1)
+		fps = 5;
+	else if(ui->scenarioCombo->currentIndex() == 2)
+		fps = 10;
+	total_frame = minute*60*fps;
 
 	this->makeEndJSON();
 	stopMovingLabel();
@@ -96,12 +117,12 @@ void MainWindow::stopSpecialTraffic(){
 
 
 void MainWindow::makeStartJSON(){
-	json_path = file_path+ts.getMilliTime()+".json";
+	json_path = file_path+ts.getMilliTime()+"_"+getScenarioString()+".json";
 	ifstream in(json_path.c_str());
 	if(in.is_open()) in >> informs;
 
 	inform["날짜"] = date;
-	inform["시작"] = to_string(start);
+	inform["시작"] = to_string(long(start));
 	inform["시나리오"] = scenario;
 	inform["지역"] = region;
 	inform["시간대"] = time;
@@ -115,8 +136,8 @@ void MainWindow::makeStartJSON(){
 }
 
 void MainWindow::makeEndJSON(){
-	inform["끝"] = to_string(end);
-	inform["총프레임"] = to_string(total_frame);
+	inform["끝"] = to_string(long(end));
+	inform["총프레임"] = to_string(int(total_frame));
 	inform["총분"] = to_string(minute);
 	inform["총시간"] = to_string(hour);
 
@@ -157,12 +178,60 @@ void MainWindow::setMovingLabel(int status){
 }
 
 void MainWindow::movingLabel(){
+	int tick = 500/60;
  	if(ui->movingLabel->x() > 500){
 		ui->movingLabel->move(0,330);
 	}else{
-		ui->movingLabel->move(ui->movingLabel->x()+5,330);
+		ui->movingLabel->move(ui->movingLabel->x()+tick,330);
 	}
 }
 void MainWindow::stopMovingLabel(){
 	timer->stop();
+}
+
+string MainWindow::getScenarioString(){
+	int time0, time1, time2; 
+	int road0, road1, road2, road3, road4, road5, road6, road7;
+	int time, road, weather; 
+	string pre = "0";
+
+	if(ui->roadCombo->currentIndex() == 5 || ui->roadCombo->currentIndex() == 6 || ui->roadCombo->currentIndex() == 7 ){
+		time0 = 0; time1 = 15; road5= 0; road6 = 5; road7 = 10;
+		if(ui->timeCombo->currentIndex() == 0)
+			time = time0; 
+		else if(ui->timeCombo->currentIndex() == 1)
+			time = time1;
+		else if(ui->timeCombo->currentIndex() == 2)
+			time = time1;
+		if(ui->roadCombo->currentIndex() == 5)
+			road = road5; 
+		if(ui->roadCombo->currentIndex() == 6)
+			road = road6;
+		if(ui->roadCombo->currentIndex() == 7)
+			road = road7;
+		pre = "S0";
+	}else{
+		time0 = 0; time1 = 22; time2 = 44; road0 = 0; road1 = 5; road2 = 10; road3 = 15; road4 = 20;
+		if(ui->timeCombo->currentIndex() == 0)
+			time = time0; 
+		else if(ui->timeCombo->currentIndex() == 1)
+			time = time2;
+		else if(ui->timeCombo->currentIndex() == 2)
+			time = time1;
+		if(ui->roadCombo->currentIndex() == 0)
+			road = road0; 
+		else if(ui->roadCombo->currentIndex() == 1)
+			road = road1;
+		else if(ui->roadCombo->currentIndex() == 2)
+			road = road2;
+		else if(ui->roadCombo->currentIndex() == 3)
+			road = road3;
+		else if(ui->roadCombo->currentIndex() == 4)
+			road = road4;
+	}
+	weather = ui->weatherCombo->currentIndex();
+
+	int scene =  time + road + weather + 1;
+	string scenes = pre+to_string(scene);
+	return scenes;
 }
